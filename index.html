@@ -926,7 +926,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     margin-top: 60px;
-    align-items: start;
+    align-items: stretch;
   }
 
   .price-card {
@@ -1001,7 +1001,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 
   .price-features li {
@@ -1019,12 +1019,7 @@
     flex-shrink: 0;
   }
 
-  .price-card .btn-primary,
-  .price-card .btn-secondary {
-    display: block;
-    text-align: center;
-    width: 100%;
-  }
+
 
   .free-session {
     margin-top: 48px;
@@ -1277,36 +1272,38 @@
   filter: grayscale(15%) contrast(1.05);
 }
 
-/* ===== HERO - TABLET (side by side) ===== */
+/* ===== HERO - TABLET (stacked, image on top) ===== */
 @media (max-width: 768px) and (min-width: 481px) {
   #hero {
-    flex-direction: row;
-    align-items: center;
-    gap: 24px;
-    padding: 100px 24px 140px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 80px 0 60px;
+    min-height: auto;
   }
   .hero-photo {
     position: relative;
     top: auto;
     right: auto;
-    width: 42%;
-    flex-shrink: 0;
-    order: 2;
-    align-self: flex-end;
+    width: 100%;
+    overflow: visible;
+    order: 1;
   }
   .hero-photo img {
     width: 100%;
     height: auto;
-    object-position: center bottom;
+    object-fit: contain;
+    object-position: center top;
+    display: block;
   }
   .hero-content {
-    order: 1;
-    max-width: 58%;
-    flex: 1;
+    order: 2;
+    padding: 28px 32px 20px;
+    max-width: 100%;
   }
-  .hero-title { font-size: 2.8rem; }
-  .hero-stats { gap: 16px; flex-wrap: wrap; }
-  .stat-num { font-size: 1.7rem; }
+  .hero-title { font-size: 3.2rem; }
+  .hero-stats { gap: 20px; flex-wrap: wrap; }
+  .stat-num { font-size: 1.9rem; }
+  .waveform { display: none; }
 }
 
 /* ===== HERO - PHONE (image on top, stacked) ===== */
@@ -1347,6 +1344,52 @@
   .waveform { display: none; }
 }
 
+
+  /* ===== MONTHLY PACKAGE TOGGLE ===== */
+  .pkg-toggle {
+    display: flex;
+    gap: 8px;
+    margin: 18px 0 14px;
+  }
+  .pkg-btn {
+    flex: 1;
+    padding: 7px 0;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--gray);
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .pkg-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .pkg-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #000;
+  }
+  .pkg-note {
+    font-size: 0.78rem;
+    color: var(--gray);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    min-height: 1.2em;
+  }
+  .price-per {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1.1rem;
+    color: var(--gray);
+    align-self: flex-end;
+    margin-bottom: 6px;
+    margin-left: 2px;
+  }
 </style>
 </head>
 <body>
@@ -1776,15 +1819,15 @@
       <div class="price-desc">Perfect for beginners & younger students</div>
       <div class="price-amount">
         <span class="price-currency">$</span>
-        <span class="price-num">TBD</span>
+        <span class="price-num">$45</span>
       </div>
       <ul class="price-features">
         <li>Focused skill building</li>
         <li>Great for beginners</li>
         <li>Personalized lesson plan</li>
         <li>Practice assignments</li>
+        <li>Flexible scheduling</li>
       </ul>
-      <a href="#contact" class="btn-secondary">Get in Touch</a>
     </div>
     <div class="price-card featured">
       <div class="popular-badge">Most Popular</div>
@@ -1792,7 +1835,7 @@
       <div class="price-desc">Best for intermediate & advanced players</div>
       <div class="price-amount">
         <span class="price-currency">$</span>
-        <span class="price-num">TBD</span>
+        <span class="price-num">$80</span>
       </div>
       <ul class="price-features">
         <li>Deep skill development</li>
@@ -1801,23 +1844,30 @@
         <li>Jam along with backing tracks</li>
         <li>Full practice routine</li>
       </ul>
-      <a href="#contact" class="btn-primary">Book This Lesson</a>
     </div>
     <div class="price-card">
       <div class="price-name">Monthly Package</div>
       <div class="price-desc">Consistent progress with weekly lessons</div>
+
+      <div class="pkg-toggle">
+        <button class="pkg-btn active" onclick="setPkg(this, 160, 30)">30 min</button>
+        <button class="pkg-btn" onclick="setPkg(this, 300, 60)">60 min</button>
+      </div>
+
       <div class="price-amount">
         <span class="price-currency">$</span>
-        <span class="price-num">TBD</span>
+        <span class="price-num" id="pkg-price">150</span>
+        <span class="price-per">/mo</span>
       </div>
+      <div class="pkg-note" id="pkg-note">4 × 30-min lessons &mdash; best value!</div>
+
       <ul class="price-features">
         <li>4 lessons per month</li>
-        <li>Discounted rate</li>
+        <li>Discounted monthly rate!</li>
         <li>Priority scheduling</li>
         <li>Progress tracking</li>
         <li>Best results guaranteed</li>
       </ul>
-      <a href="#contact" class="btn-secondary">Ask About Packages</a>
     </div>
   </div>
   <div class="free-session fade-in">
@@ -1964,6 +2014,15 @@
     const nav = document.querySelector('nav');
     nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
   });
+</script>
+
+<script>
+function setPkg(btn, price, mins) {
+  document.querySelectorAll('.pkg-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pkg-price').textContent = price;
+  document.getElementById('pkg-note').textContent = '4 × ' + mins + '-min lessons — best value';
+}
 </script>
 </body>
 </html>
