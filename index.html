@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryan Durham Guitar Lessons | Bothell, WA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --bg2: #111114;
+    --bg3: #16161a;
+    --card: #1a1a1f;
+    --card2: #1f1f26;
+    --gold: #e8a020;
+    --gold2: #f5b840;
+    --red: #c0392b;
+    --red2: #e74c3c;
+    --white: #f0ede8;
+    --gray: #8a8a96;
+    --gray2: #5a5a66;
+    --border: rgba(232,160,32,0.15);
+    --border2: rgba(255,255,255,0.06);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* ===== NOISE OVERLAY ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    padding: 0 40px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,11,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border2);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: #000 !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold2) !important; color: #000 !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(10,10,11,0.98);
+    backdrop-filter: blur(20px);
+    z-index: 899;
+    padding: 24px 40px;
+    flex-direction: column;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border2);
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover, .mobile-menu a:last-child { color: var(--gold); border-bottom: none; }
+
+  /* ===== HERO ===== */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 6vw;
+    padding-top: 70px;
+    padding-bottom: 140px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 70% 50%, rgba(232,160,32,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 80% at 20% 80%, rgba(192,57,43,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 40% at 50% 0%, rgba(232,160,32,0.04) 0%, transparent 50%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(232,160,32,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,160,32,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 580px;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(232,160,32,0.1);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 6px 14px;
+    margin-bottom: 28px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+    color: var(--white);
+  }
+
+  .hero-title .accent { color: var(--gold); }
+  .hero-title .red-accent { color: var(--red2); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 40px;
+  }
+
+  .hero-sub strong { color: var(--white); font-weight: 600; }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 52px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    border: 2px solid var(--gold);
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--gold);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 2px solid rgba(255,255,255,0.15);
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--white);
+    color: var(--white);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .waveform {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    padding: 0 20px;
+    opacity: 0.25;
+    z-index: 1;
+  }
+
+  .wave-bar {
+    flex: 1;
+    max-width: 6px;
+    background: var(--gold);
+    border-radius: 2px 2px 0 0;
+    animation: wave 1.5s ease-in-out infinite;
+  }
+
+  @keyframes wave {
+    0%, 100% { height: 20%; }
+    50% { height: 100%; }
+  }
+
+  /* ===== SECTION BASE ===== */
+  section { padding: 100px 6vw; position: relative; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  /* ===== WHY CHOOSE ME ===== */
+  #why { background: var(--bg2); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .why-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .why-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 24px 20px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .why-card:hover { border-color: var(--border); transform: translateY(-2px); }
+  .why-card:hover::before { opacity: 1; }
+
+  .why-icon { font-size: 1.8rem; margin-bottom: 12px; }
+
+  .why-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .why-card p {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .why-text .section-sub { margin-bottom: 28px; }
+
+  .youtube-callout {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    margin-top: 24px;
+  }
+
+  .youtube-callout h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+
+  .youtube-callout p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  .youtube-callout strong { color: var(--white); }
+
+  /* ===== WHAT YOU'LL LEARN ===== */
+  #learn { background: var(--bg); }
+
+  .learn-header { margin-bottom: 60px; }
+
+  .levels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .level-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .level-card:hover { border-color: var(--border); transform: translateY(-3px); }
+
+  .level-header {
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid var(--border2);
+    position: relative;
+  }
+
+  .level-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  .tag-beginner { background: rgba(46,204,113,0.15); color: #2ecc71; }
+  .tag-intermediate { background: rgba(232,160,32,0.15); color: var(--gold); }
+  .tag-advanced { background: rgba(192,57,43,0.15); color: var(--red2); }
+
+  .level-header h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  .level-body { padding: 24px; }
+
+  .level-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .level-list li {
+    font-size: 0.85rem;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.4;
+  }
+
+  .level-list li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ===== HOW I TEACH ===== */
+  #method { background: var(--bg3); }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .problems-list, .solutions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .problem-item, .solution-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .problem-item {
+    background: rgba(192,57,43,0.08);
+    border: 1px solid rgba(192,57,43,0.15);
+    color: var(--gray);
+  }
+
+  .problem-item .icon { color: var(--red2); font-size: 1rem; flex-shrink: 0; }
+
+  .solution-item {
+    background: rgba(46,204,113,0.06);
+    border: 1px solid rgba(46,204,113,0.12);
+    color: var(--gray);
+  }
+
+  .solution-item .icon { color: #2ecc71; font-size: 1rem; flex-shrink: 0; }
+
+  .col-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .col-label.bad { color: var(--red2); }
+  .col-label.good { color: #2ecc71; }
+
+  /* ===== GENRES ===== */
+  #genres { background: var(--bg2); }
+
+  .genres-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 60px;
+  }
+
+  .genre-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .genre-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--red2));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .genre-card:hover { transform: translateY(-3px); border-color: var(--border); }
+  .genre-card:hover::after { opacity: 1; }
+
+  .genre-emoji { font-size: 2.2rem; margin-bottom: 14px; }
+
+  .genre-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .genre-card p { font-size: 0.83rem; color: var(--gray); line-height: 1.6; }
+
+  .songs-section {
+    margin-top: 60px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px 40px;
+  }
+
+  .songs-section h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    color: var(--gold);
+  }
+
+  .songs-section p { font-size: 0.85rem; color: var(--gray); margin-bottom: 24px; }
+
+  .bands-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .band-tag {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    padding: 6px 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray);
+    transition: all 0.2s;
+  }
+
+  .band-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ===== PHILOSOPHY ===== */
+  #philosophy { background: var(--bg); }
+
+  .philosophy-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .big-quote {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    letter-spacing: 1px;
+    line-height: 1.1;
+    color: var(--white);
+    margin: 40px 0 30px;
+  }
+
+  .big-quote span { color: var(--gold); }
+
+  .philosophy-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 50px;
+    text-align: left;
+  }
+
+  .phil-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 28px 22px;
+    transition: all 0.3s;
+  }
+
+  .phil-card:hover { border-color: var(--border); }
+
+  .phil-card .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: rgba(232,160,32,0.15);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .phil-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .phil-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+
+  /* ===== JOURNEY ===== */
+  #journey { background: var(--bg3); }
+
+  .journey-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .journey-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .journey-item {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border2);
+  }
+
+  .journey-item:last-child { border-bottom: none; }
+
+  .journey-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    opacity: 0.5;
+    flex-shrink: 0;
+    width: 30px;
+    line-height: 1.2;
+  }
+
+  .journey-item h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .journey-item p { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+
+  .journey-callout {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px;
+  }
+
+  .journey-callout h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1;
+  }
+
+  .journey-callout h3 span { color: var(--gold); }
+
+  .journey-callout p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .goals-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .goals-list li {
+    font-size: 0.85rem;
+    color: var(--gray);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .goals-list li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  /* ===== FAQ ===== */
+  #faq { background: var(--bg2); }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 60px;
+  }
+
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .faq-item.open { border-color: var(--border); }
+
+  .faq-q {
+    padding: 22px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+  }
+
+  .faq-q span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  .faq-toggle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    color: var(--gold);
+    transition: all 0.3s;
+  }
+
+  .faq-item.open .faq-toggle { background: var(--gold); color: #000; transform: rotate(45deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 24px;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 200px;
+    padding: 0 24px 22px;
+  }
+
+  .faq-a p { font-size: 0.85rem; color: var(--gray); line-height: 1.7; }
+
+  /* ===== PRICING ===== */
+  #pricing { background: var(--bg); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .price-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 36px 28px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .price-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, var(--card2) 0%, rgba(232,160,32,0.05) 100%);
+  }
+
+  .price-card:hover { transform: translateY(-4px); }
+
+  .popular-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: #000;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .price-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .price-desc { font-size: 0.8rem; color: var(--gray); margin-bottom: 28px; }
+
+  .price-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+
+  .price-currency {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gold);
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+
+  .price-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .price-per { font-size: 0.8rem; color: var(--gray); }
+
+  .price-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .price-features li {
+    font-size: 0.85rem;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .price-features li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .price-card .btn-primary,
+  .price-card .btn-secondary {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  .free-session {
+    margin-top: 48px;
+    background: linear-gradient(135deg, var(--card) 0%, rgba(232,160,32,0.04) 100%);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .free-session h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .free-session h3 span { color: var(--gold); }
+
+  .free-session p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; max-width: 500px; }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--bg3); }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .contact-info p {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  .contact-info strong { color: var(--white); }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.88rem;
+    color: var(--gray);
+  }
+
+  .contact-detail .ico {
+    width: 36px;
+    height: 36px;
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-group label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray2);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    padding: 12px 14px;
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8a96' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .form-group select option { background: var(--card2); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--gray2); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border2);
+    padding: 40px 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--gray2);
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--gray2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gray2); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .method-grid { grid-template-columns: 1fr; gap: 40px; }
+    .levels-grid { grid-template-columns: 1fr; gap: 16px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .journey-inner { grid-template-columns: 1fr; gap: 40px; }
+    .free-session { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    .genres-grid { grid-template-columns: 1fr; }
+    .philosophy-cards { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-cta-desktop { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 70px 20px; }
+    /* hero handled by photo media queries */
+    .hero-title { font-size: 3rem; }
+    .hero-stats { gap: 24px; }
+    .why-cards { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer { flex-direction: column; text-align: center; }
+    .free-session { padding: 28px 24px; }
+    footer { padding: 30px 20px; flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .songs-section { padding: 24px 20px; }
+    .mobile-menu { padding: 20px; }
+    .hero-stats { flex-direction: column; gap: 16px; }
+  }
+/* ===== HERO PHOTO - DESKTOP ===== */
+.hero-photo {
+  position: absolute;
+  top: 100px;
+  right: 8vw;
+  z-index: 3;
+  width: clamp(350px, 44vw, 720px);
+  pointer-events: none;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom right;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+}
+
+/* ===== HERO - TABLET (side by side) ===== */
+@media (max-width: 768px) and (min-width: 481px) {
+  #hero {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 100px 24px 140px;
+  }
+  .hero-photo {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 42%;
+    flex-shrink: 0;
+    order: 2;
+    align-self: flex-end;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: auto;
+    object-position: center bottom;
+  }
+  .hero-content {
+    order: 1;
+    max-width: 58%;
+    flex: 1;
+  }
+  .hero-title { font-size: 2.8rem; }
+  .hero-stats { gap: 16px; flex-wrap: wrap; }
+  .stat-num { font-size: 1.7rem; }
+}
+
+/* ===== HERO - PHONE (image on top, stacked) ===== */
+@media (max-width: 480px) {
+  #hero {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 70px 0 40px;
+    min-height: auto;
+  }
+  .hero-photo {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-height: 55vw;
+    overflow: hidden;
+    order: 1;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    max-height: 55vw;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(15%) contrast(1.05);
+  }
+  .hero-content {
+    order: 2;
+    padding: 28px 20px 20px;
+    max-width: 100%;
+  }
+  .hero-badge { margin-bottom: 18px; }
+  .hero-title { font-size: 2.6rem; line-height: 0.92; margin-bottom: 18px; }
+  .hero-sub { font-size: 0.95rem; margin-bottom: 28px; }
+  .hero-actions { flex-direction: column; align-items: stretch; margin-bottom: 28px; }
+  .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+  .hero-stats { flex-wrap: wrap; gap: 16px; padding-bottom: 20px; }
+  .waveform { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Ryan<span>.</span>Durham</a>
+  <ul class="nav-links">
+    <li><a href="#why">About</a></li>
+    <li><a href="#learn">What You'll Learn</a></li>
+    <li><a href="#genres">Genres</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Lesson</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta nav-cta-desktop" style="display:none;">Book a Lesson</a>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#why" onclick="closeMenu()">About</a>
+  <a href="#learn" onclick="closeMenu()">What You'll Learn</a>
+  <a href="#genres" onclick="closeMenu()">Genres</a>
+  <a href="#method" onclick="closeMenu()">My Method</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#contact" onclick="closeMenu()">Book a Lesson →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  
+
+<div class="hero-photo">
+  <img src="images/ryan.png" alt="Ryan Durham - Guitar Instructor">
+</div>
+
+<div class="hero-content">
+    <div class="hero-badge">Now Accepting Students · Bothell, WA</div>
+    <h1 class="hero-title">
+      Real Guitar<br>
+      Skills.<br>
+      <span class="accent">Real Songs.</span><br>
+      <span class="red-accent" style="white-space:nowrap;">Real Progress.</span>
+    </h1>
+    <p class="hero-sub">
+      <strong>30+ years of real-world playing experience.</strong> Personalized lessons built around the music YOU love — from beginner chords to advanced technique, rock to blues to metal.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start Your Guitar Journey</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">30+</span>
+        <span class="stat-label">Years Playing</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">All</span>
+        <span class="stat-label">Skill Levels</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Genres Taught</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Personalized</span>
+      </div>
+    </div>
+  </div>
+  <div class="waveform" id="waveform"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY CHOOSE ME -->
+<section id="why">
+  <div class="why-grid">
+    <div class="why-text fade-in">
+      <div class="section-label">Why Choose Me</div>
+      <h2 class="section-title">Experience You Can Actually Hear</h2>
+      <p class="section-sub">I'm not just a teacher — I'm a guitarist with 30+ years of real-world experience playing in bands and live performances. That real-world experience means better, more practical lessons for you.</p>
+      <div class="youtube-callout">
+        <h3>"YouTube Shows You WHAT. I Show You HOW."</h3>
+        <p>There are thousands of free guitar videos online — but most players get stuck because they don't know <strong>what to practice, how to practice, or whether they're practicing correctly.</strong> That's exactly what I fix.</p>
+      </div>
+    </div>
+    <div class="why-cards fade-in">
+      <div class="why-card">
+        <div class="why-icon">🎸</div>
+        <h3>Real Playing Experience</h3>
+        <p>30+ years playing guitar in real bands and live performances — not just teaching from a textbook.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Faster Learning Methods</h3>
+        <p>Practice smarter, not longer. Structured progression that builds real skills quickly.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h3>Personalized Lessons</h3>
+        <p>Every lesson plan is built around YOUR goals, YOUR favorite songs, and YOUR current level.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔥</div>
+        <h3>Multiple Genres</h3>
+        <p>Rock, blues, metal, pop and more. Learn the styles that inspire YOU to pick up the guitar.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎵</div>
+        <h3>Learn Songs You Love</h3>
+        <p>Play along to real music, jam tracks, and songs that make you want to practice every day.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🧠</div>
+        <h3>Confidence Builder</h3>
+        <p>Fun, encouraging environment. No judgment — just steady, measurable progress from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT YOU'LL LEARN -->
+<section id="learn">
+  <div class="learn-header fade-in">
+    <div class="section-label">Curriculum</div>
+    <h2 class="section-title">Beginner to Advanced — We've Got You Covered</h2>
+    <p class="section-sub">Wherever you are on your guitar journey, I meet you there and take you further.</p>
+  </div>
+  <div class="levels-grid">
+    <div class="level-card fade-in">
+      <div class="level-header">
+        <div class="level-tag tag-beginner">Beginner</div>
+        <h3>Build Your Foundation</h3>
+      </div>
+      <div class="level-body">
+        <ul class="level-list">
+          <li>Basic chords & strumming patterns</li>
+          <li>Rhythm & timing fundamentals</li>
+          <li>Tuning & reading guitar tabs</li>
+          <li>Playing your first real songs</li>
+          <li>Finger strength & placement</li>
+          <li>Avoiding bad habits from the start</li>
+        </ul>
+      </div>
+    </div>
+    <div class="level-card fade-in">
+      <div class="level-header">
+        <div class="level-tag tag-intermediate">Intermediate</div>
+        <h3>Level Up Your Playing</h3>
+      </div>
+      <div class="level-body">
+        <ul class="level-list">
+          <li>Barre chords & power chords</li>
+          <li>Pentatonic scales & improvisation</li>
+          <li>Soloing basics & lead techniques</li>
+          <li>Alternate picking & economy picking</li>
+          <li>Music theory that actually makes sense</li>
+          <li>Playing with backing tracks</li>
+        </ul>
+      </div>
+    </div>
+    <div class="level-card fade-in">
+      <div class="level-header">
+        <div class="level-tag tag-advanced">Advanced</div>
+        <h3>Master Your Craft</h3>
+      </div>
+      <div class="level-body">
+        <ul class="level-list">
+          <li>Legato, sweep picking & speed building</li>
+          <li>Advanced phrasing & vibrato</li>
+          <li>Tone shaping & gear knowledge</li>
+          <li>Improvisation & songwriting</li>
+          <li>Metal & advanced rhythm techniques</li>
+          <li>Playing cleanly at high speed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW I TEACH -->
+<section id="method">
+  <div class="fade-in">
+    <div class="section-label">My Method</div>
+    <h2 class="section-title">Why People Quit — And How I Help You Not To</h2>
+    <p class="section-sub">Most people don't quit guitar because they lack talent. They quit because they're learning the wrong way.</p>
+  </div>
+  <div class="method-grid">
+    <div class="fade-in">
+      <div class="col-label bad">❌ Learning Alone (YouTube)</div>
+      <div class="problems-list">
+        <div class="problem-item"><span class="icon">✗</span> No structure or clear progression</div>
+        <div class="problem-item"><span class="icon">✗</span> Bad technique goes unnoticed</div>
+        <div class="problem-item"><span class="icon">✗</span> Random lessons with no direction</div>
+        <div class="problem-item"><span class="icon">✗</span> Information overload & frustration</div>
+        <div class="problem-item"><span class="icon">✗</span> No accountability to keep improving</div>
+        <div class="problem-item"><span class="icon">✗</span> Poor practice habits that slow you down</div>
+        <div class="problem-item"><span class="icon">✗</span> Years of bad habits baked in</div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="col-label good">✓ Lessons With Ryan</div>
+      <div class="solutions-list">
+        <div class="solution-item"><span class="icon">✓</span> Step-by-step personalized progression</div>
+        <div class="solution-item"><span class="icon">✓</span> Correct technique from day one</div>
+        <div class="solution-item"><span class="icon">✓</span> Learn songs YOU actually enjoy</div>
+        <div class="solution-item"><span class="icon">✓</span> Clear focus & structured practice routines</div>
+        <div class="solution-item"><span class="icon">✓</span> Real feedback & encouragement</div>
+        <div class="solution-item"><span class="icon">✓</span> Build confidence while having fun</div>
+        <div class="solution-item"><span class="icon">✓</span> Avoid years of bad habits</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GENRES -->
+<section id="genres">
+  <div class="fade-in">
+    <div class="section-label">Styles & Genres</div>
+    <h2 class="section-title">Learn the Music That Moves You</h2>
+    <p class="section-sub">From blistering metal riffs to soulful blues licks — I teach the genre that makes you want to play.</p>
+  </div>
+  <div class="genres-grid fade-in">
+    <div class="genre-card">
+      <div class="genre-emoji">🤘</div>
+      <h3>Rock & Hard Rock</h3>
+      <p>Classic rock riffs, power chords, and the fundamentals that defined generations of guitar playing. Zeppelin, Sabbath, AC/DC.</p>
+    </div>
+    <div class="genre-card">
+      <div class="genre-emoji">⚡</div>
+      <h3>Metal</h3>
+      <p>Palm muting, downpicking, fast picking technique, and the aggression of metal. Metallica, Pantera, and beyond.</p>
+    </div>
+    <div class="genre-card">
+      <div class="genre-emoji">🎸</div>
+      <h3>Blues</h3>
+      <p>Pentatonic scales, vibrato, bending, and the soul of the guitar. The foundation of almost every other style.</p>
+    </div>
+    <div class="genre-card">
+      <div class="genre-emoji">🎵</div>
+      <h3>Pop, Indie & Alternative</h3>
+      <p>Chord voicings, clean tone playing, and the guitar parts behind the songs everyone knows — Nirvana, Foo Fighters, Green Day.</p>
+    </div>
+  </div>
+  <div class="songs-section fade-in">
+    <h3>Songs You Could Be Playing</h3>
+    <p>Imagine yourself actually playing these — because you can.</p>
+    <div class="bands-grid">
+      <span class="band-tag">Metallica</span>
+      <span class="band-tag">AC/DC</span>
+      <span class="band-tag">Nirvana</span>
+      <span class="band-tag">Led Zeppelin</span>
+      <span class="band-tag">Black Sabbath</span>
+      <span class="band-tag">Foo Fighters</span>
+      <span class="band-tag">Green Day</span>
+      <span class="band-tag">Pantera</span>
+      <span class="band-tag">Alice in Chains</span>
+      <span class="band-tag">Tom Petty</span>
+      <span class="band-tag">Aerosmith</span>
+      <span class="band-tag">White Stripes</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="philosophy-inner fade-in">
+    <div class="section-label" style="justify-content:center;">Teaching Philosophy</div>
+    <h2 class="section-title">Lessons Should Be Fun. Full Stop.</h2>
+    <p class="section-sub" style="margin:0 auto 0;">Too many people quit because lessons feel boring, overwhelming, or disconnected from the music they love. That ends here.</p>
+    <div class="big-quote">
+      "The goal is to help you improve <span>while actually enjoying</span> the process."
+    </div>
+    <p class="section-sub" style="margin:0 auto;">We'll work on the music and techniques that inspire YOU to play — not just exercises that gather dust in a notebook.</p>
+    <div class="philosophy-cards">
+      <div class="phil-card">
+        <div class="num">01</div>
+        <h3>Music First</h3>
+        <p>We learn theory through songs, not the other way around. Real music from day one keeps you motivated and progressing.</p>
+      </div>
+      <div class="phil-card">
+        <div class="num">02</div>
+        <h3>Practice Smarter</h3>
+        <p>Consistency beats marathon sessions. I build practice routines that fit your life and make every minute count.</p>
+      </div>
+      <div class="phil-card">
+        <div class="num">03</div>
+        <h3>Built Around You</h3>
+        <p>Want to shred like Metallica? Play acoustic by a campfire? Finally nail that solo? Lessons adapt to YOUR goals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THE GUITAR JOURNEY -->
+<section id="journey">
+  <div class="fade-in">
+    <div class="section-label">The Journey</div>
+    <h2 class="section-title">Everyone Starts Somewhere</h2>
+    <p class="section-sub">Maybe you've told yourself you're "not musical enough" or "too old to start." Let me stop you right there.</p>
+  </div>
+  <div class="journey-inner">
+    <div class="journey-list fade-in">
+      <div class="journey-item">
+        <div class="journey-num">01</div>
+        <div>
+          <h4>Your Fingers Will Hurt at First</h4>
+          <p>That's completely normal and it goes away fast. Calluses form within weeks and it stops being an issue entirely.</p>
+        </div>
+      </div>
+      <div class="journey-item">
+        <div class="journey-num">02</div>
+        <div>
+          <h4>Chords Feel Impossible</h4>
+          <p>Every guitarist felt this way. The right method breaks it down into small, manageable steps that actually work.</p>
+        </div>
+      </div>
+      <div class="journey-item">
+        <div class="journey-num">03</div>
+        <div>
+          <h4>Progress Isn't Always Linear</h4>
+          <p>Some weeks feel huge, others feel slow. That's normal — and with guidance, the overall trajectory is always up.</p>
+        </div>
+      </div>
+      <div class="journey-item">
+        <div class="journey-num">04</div>
+        <div>
+          <h4>Consistency Is Everything</h4>
+          <p>15–20 minutes a day beats a 3-hour session once a week. I'll show you exactly how to use your practice time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="journey-callout fade-in">
+      <h3>What to Expect in <span>Your First Lesson</span></h3>
+      <p>No pressure, no tests — just a conversation about where you are and where you want to go.</p>
+      <ul class="goals-list">
+        <li>We talk about your goals and current skill level</li>
+        <li>Learn a riff, chord, or song you actually like</li>
+        <li>Build a simple practice plan to start immediately</li>
+        <li>Walk away with something real you can play at home</li>
+        <li>Feel confident and excited — not overwhelmed</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="fade-in">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Questions? Answered.</h2>
+    <p class="section-sub">Everything you want to know before booking your first lesson.</p>
+  </div>
+  <div class="faq-grid fade-in">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Do I need any experience to start?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>Absolutely not. Complete beginners are welcome. We start from scratch and build your skills from the ground up. All you need is a guitar and the desire to learn.</p></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>What age groups do you teach?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>I teach students of all ages. Whether you're 10 or 60, it's never too early or too late to start. Lessons are tailored to each student's age and learning style.</p></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Do you teach acoustic or electric guitar?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>Both! Whether you want to play acoustic by the campfire or plug in and rock, I can teach you. We can also help you decide which is better for your goals.</p></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Are lessons in-person or online?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>I offer in-person lessons in Bothell, WA, and can also travel to you. Reach out to discuss what works best for your schedule and location.</p></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>What guitar should I buy as a beginner?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>Great question — and it depends on the style you want to learn. Contact me before buying and I'll point you toward the right instrument for your budget and goals. No need to overspend at the start.</p></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>How often should I practice?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>Consistency matters more than duration. Even 15–20 minutes of focused practice daily will produce faster results than an occasional 2-hour session. I'll build a realistic routine that works for your life.</p></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Can I learn my favorite songs?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>Yes — that's the whole point. Learning songs you love keeps you motivated and makes practice fun. We'll mix technical development with music you actually want to play.</p></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>How long are lessons?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>I offer 30-minute and 60-minute lessons. Beginners often start with 30-minute sessions while more advanced students benefit from the full hour. We can discuss what's right for you.</p></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>How quickly will I see improvement?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>Most students notice real improvement within the first few lessons. You'll leave your first session already able to play something. Consistent practice with proper guidance accelerates progress dramatically.</p></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>What styles and genres do you teach?</span><div class="faq-toggle">+</div></div>
+      <div class="faq-a"><p>Rock, blues, metal, pop, alternative, and more. With 30+ years of experience across multiple genres and bands, I can teach you the style that excites you most.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="fade-in">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <p class="section-sub">No surprise fees. No commitments until you're ready. Just great lessons at fair rates.</p>
+  </div>
+  <div class="pricing-grid fade-in">
+    <div class="price-card">
+      <div class="price-name">30-Min Lesson</div>
+      <div class="price-desc">Perfect for beginners & younger students</div>
+      <div class="price-amount">
+        <span class="price-currency">$</span>
+        <span class="price-num">TBD</span>
+      </div>
+      <ul class="price-features">
+        <li>Focused skill building</li>
+        <li>Great for beginners</li>
+        <li>Personalized lesson plan</li>
+        <li>Practice assignments</li>
+      </ul>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="price-card featured">
+      <div class="popular-badge">Most Popular</div>
+      <div class="price-name">60-Min Lesson</div>
+      <div class="price-desc">Best for intermediate & advanced players</div>
+      <div class="price-amount">
+        <span class="price-currency">$</span>
+        <span class="price-num">TBD</span>
+      </div>
+      <ul class="price-features">
+        <li>Deep skill development</li>
+        <li>More songs & techniques</li>
+        <li>Theory & practical combined</li>
+        <li>Jam along with backing tracks</li>
+        <li>Full practice routine</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Book This Lesson</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Monthly Package</div>
+      <div class="price-desc">Consistent progress with weekly lessons</div>
+      <div class="price-amount">
+        <span class="price-currency">$</span>
+        <span class="price-num">TBD</span>
+      </div>
+      <ul class="price-features">
+        <li>4 lessons per month</li>
+        <li>Discounted rate</li>
+        <li>Priority scheduling</li>
+        <li>Progress tracking</li>
+        <li>Best results guaranteed</li>
+      </ul>
+      <a href="#contact" class="btn-secondary">Ask About Packages</a>
+    </div>
+  </div>
+  <div class="free-session fade-in">
+    <div>
+      <h3>Not Sure Yet? Let's Talk <span>For Free.</span></h3>
+      <p>Contact me for a free conversation about your goals and your current playing level. No pressure — just a friendly chat to see if we're a good fit. Every guitarist's journey is different, and I want to make sure I'm the right teacher for you.</p>
+    </div>
+    <a href="#contact" class="btn-primary" style="white-space:nowrap;">Start the Conversation</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-info fade-in">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's Build Your Guitar Journey</h2>
+      <p>Every guitarist has their own goals, style, and musical journey. Whether you're just getting started or looking to improve your technique and confidence, <strong>I’ll help create lessons tailored to what YOU want to play and achieve.</strong> My goal is to help you improve faster, build solid fundamentals, and most importantly — enjoy the process. Give me a call, send an email, or fill out the contact form and let’s talk about how we can take your playing to the next level.</p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="ico">📍</div>
+          <span>Bothell, WA — Private guitar lessons available at my home studio or in the comfort of your home</span>
+        </div>
+        <div class="contact-detail">
+          <div class="ico">📅</div>
+          <span>Flexible scheduling — weekdays & weekends</span>
+        </div>
+        <div class="contact-detail">
+          <div class="ico">🎸</div>
+          <span>All ages, all skill levels welcome</span>
+        </div>
+        <div class="contact-detail">
+          <div class="ico">💬</div>
+          <span>Free intro conversation — no commitment needed</span>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="(425) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>Your Experience Level</label>
+          <select>
+            <option value="" disabled selected>Select your level...</option>
+            <option>Complete Beginner — Never picked up a guitar</option>
+            <option>Beginner — Know a few chords</option>
+            <option>Intermediate — Been playing for a while</option>
+            <option>Advanced — Looking to refine technique</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>What Do You Want to Learn?</label>
+          <textarea placeholder="Tell me about your goals — favorite bands, songs you want to learn, styles you're interested in, or any specific techniques..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ryan<span>.</span>Durham</div>
+  <div class="footer-copy">© 2025 Ryan Durham Guitar Lessons · Bothell, WA · All Rights Reserved</div>
+  <div class="footer-links">
+    <a href="#why">About</a>
+    <a href="#learn">Lessons</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Waveform generation
+  const waveform = document.getElementById('waveform');
+  const barCount = Math.floor(window.innerWidth / 9);
+  for (let i = 0; i < barCount; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'wave-bar';
+    const height = Math.random() * 80 + 20;
+    bar.style.height = height + '%';
+    bar.style.animationDelay = (Math.random() * 1.5) + 's';
+    bar.style.animationDuration = (1 + Math.random() * 1.5) + 's';
+    waveform.appendChild(bar);
+  }
+
+  // FAQ toggle
+  function toggleFaq(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = '✓ Message Sent! I\'ll be in touch soon.';
+    btn.style.background = '#2ecc71';
+    btn.style.border = '2px solid #2ecc71';
+    btn.disabled = true;
+  }
+
+  // Sticky nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
+  });
+</script>
+</body>
+</html>
